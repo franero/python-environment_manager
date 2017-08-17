@@ -702,12 +702,12 @@ class EMApi(object):
 
     ## Upload Package
     # TODO Slice
-    def get_package_upload_url_environment(self, service=None, version=None, environment=None, **kwargs):
+    def get_package_upload_url_environment(self, service=None, version=None, environment=None, data={}, **kwargs):
         """ Upload an environment-specific package """
         if service is None or version is None or environment is None:
             raise SyntaxError('Parameter has not been specified')
         request_endpoint = '/api/v1/package-upload-url/%s/%s/%s' % (service, version, environment)
-        return self.query(query_endpoint=request_endpoint, query_type='GET', **kwargs)
+        return self.query(query_endpoint=request_endpoint, query_type='GET', data=data, **kwargs)
 
     def get_package_upload_url(self, service=None, version=None, **kwargs):
         """ Upload an environment-independent package """
